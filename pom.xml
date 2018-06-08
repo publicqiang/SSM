@@ -234,5 +234,15 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <!--使用maven  xml文件加载-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>

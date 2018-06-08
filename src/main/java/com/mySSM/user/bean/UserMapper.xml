@@ -16,6 +16,27 @@
         from T_USER
         where ID = #{id,jdbcType=VARCHAR}
     </select>
+    <select id="findAll"  resultMap="BaseResultMap" parameterType="com.mySSM.user.bean.User">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM T_USER
+        WHERE 1=1
+            <if test="id != null">
+                AND ID = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="userName != null">
+                AND USER_NAME = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="password != null">
+                AND PASSWORD = #{password,jdbcType=VARCHAR}
+            </if>
+            <if test="state != null">
+                AND STATE = #{state，jdbcType=DECIMAL}
+            </if>
+    </select>
+    <select id="countByUserName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT COUNT(1) FROM T_USER WHERE USER_NAME = #{userName}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from T_USER
     where ID = #{id,jdbcType=VARCHAR}
