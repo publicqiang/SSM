@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!--<properties url="file:///Users/summer/develop/ceair/bcc/src/main/resources/jdbc.properties"  />-->
+    <properties resource="jdbc.properties"/>
+
+    <classPathEntry location="C:\Users\10408\.m2\repository\com\oracle\ojdbc6\11.2.0.3\ojdbc6-11.2.0.3.jar"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection
+                driverClass="oracle.jdbc.driver.OracleDriver"
+                connectionURL="jdbc:oracle:thin:@//localhost:1521/orcl"
+                userId="bocc"
+                password="boccpass">
+        </jdbcConnection>
+
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成的包名和工程名 -->
+        <javaModelGenerator targetPackage="com.mySSM.user.bean" targetProject="src/main/java">
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.mySSM.user.bean" targetProject="src/main/java"/>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mySSM.user.dao" targetProject="src/main/java">
+            <!--<property name="enableSubPackages" value="true"/>-->
+        </javaClientGenerator>
+
+        <!-- 数据库表 -->
+        <table tableName="T_USER" domainObjectName="User"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+    </context>
+
+</generatorConfiguration>
