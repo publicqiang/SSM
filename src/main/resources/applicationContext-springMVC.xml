@@ -13,18 +13,23 @@
     <context:component-scan base-package="com.mySSM.*"/>
 
     <!--=================================== 静态页面交由默认web servlet处理 =========================================-->
-    <!-- 开启SpringMVC注解模式 -->
+    <!-- 开启SpringMVC注解模式
+        简化配置：
+        （1）自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+        (2)提供一系列：数据绑定，数字和日期的format @NumberFormat，@DataTimeFormat,xml,json默认读写支持-->
     <mvc:annotation-driven/>
-    <!-- 静态资源默认servlet配置 -->
+    <!-- 静态资源默认servlet配置
+         1、加入对静态资源的处理：js,gif,png
+         2、允许使用"/"做整体映射-->
     <mvc:default-servlet-handler/>
 
     <!-- ========================================模板引擎 ViewResolver config ================================-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <!--网页文件存放位置-->
-        <!--<property name="prefix" value="/WEB-INF/view/"/>-->
+        <property name="prefix" value="/WEB-INF/view/"/>
         <!--相当于url后缀加上.jsp-->
-        <!--<property name="suffix" value=".jsp"/>-->
+        <property name="suffix" value=".jsp"/>
     </bean>
 
 </beans>

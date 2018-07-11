@@ -13,13 +13,7 @@
 </head>
 <body>
 
-<h4><a href="user/findList">查询所有用户</a></h4>
-
-<form action="user/index" method="post">
-    用户名：<input type="text" name="userName"/>
-    密码：<input type="password" name="password"/>
-    <input type="submit" value="注册"/><font color="red">${error}</font>
-</form>
+<h1>hello</h1>
 
 </body>
 </html>

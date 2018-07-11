@@ -27,7 +27,7 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping("index")
+    @RequestMapping("register")
     public ModelAndView register(User user){
         logger.info("注册用户");
         Map<String ,Object> map = new HashMap<>();
