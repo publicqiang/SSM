@@ -4,6 +4,7 @@ import com.mySSM.seckill.dao.SeckillDAO;
 import com.mySSM.seckill.dao.SuccessSeckillDAO;
 import com.mySSM.seckill.dto.Exposer;
 import com.mySSM.seckill.dto.SeckillExecution;
+import com.mySSM.seckill.dto.cache.RedisDao;
 import com.mySSM.seckill.entity.Seckill;
 import com.mySSM.seckill.entity.SuccessSeckill;
 import com.mySSM.seckill.enums.SeckillStateEnum;
@@ -29,6 +30,8 @@ public class SeckillServiceImpl implements SeckillService {
     private SeckillDAO seckillDAO;
     @Autowired
     private SuccessSeckillDAO successSeckillDAO;
+    @Autowired
+    private RedisDao redisDao;
 
     //md5盐值字符串，用于混淆md5
     private final String slat = "fu124@#yweu12hio#$%^&*123wefg456#$%^JKoi1k";
@@ -45,6 +48,7 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Override
     public Exposer exportSeckillUrl(long seckillId) {
+
         Seckill seckill = seckillDAO.queryById(seckillId);
         if (seckill == null)
             return new Exposer(false, seckillId);
