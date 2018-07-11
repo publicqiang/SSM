@@ -83,6 +83,14 @@ public class SeckillController {
         return seckillResult;
     }
 
+    /**
+     * 执行秒杀操作
+     *
+     * @param seckillId
+     * @param md5
+     * @param userPhone
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/{seckillId}/{md5}/execution",
             method = RequestMethod.POST,
